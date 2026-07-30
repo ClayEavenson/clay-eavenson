@@ -12,7 +12,7 @@ export default function Home() {
             </div>
             <div className="hero-actions">
               <a className="btn btn-primary" href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1" rel="noopener noreferrer" target="_blank">Buy the book<span aria-hidden="true">&#8594;</span></a>
-              <a className="btn btn-outline" href="#about">About Clay<span aria-hidden="true">&#8594;</span></a>
+              <a className="btn btn-outline" href="/about">About Clay<span aria-hidden="true">&#8594;</span></a>
             </div>
           </div>
           <div className="hero-art">
@@ -68,7 +68,7 @@ export default function Home() {
             <h2 className="h2">Chased the dream.<br />Lost the plot.<br />Started over.</h2>
             <p>Husband. Father. Former professional baseball player with the New York Yankees. Former real estate agent. Former fishing guide. Current entrepreneur — and a reluctant expert in rebuilding after disaster.</p>
             <p>Clay writes with the kind of honesty that admits he was often the common denominator in his own problems, and with the humor needed to survive that realization.</p>
-            <a className="link-underline" href="#about">Read the full story<span aria-hidden="true">&#8594;</span></a>
+            <a className="link-underline" href="/about">Read the full story<span aria-hidden="true">&#8594;</span></a>
           </div>
           <div className="photo-grid">
             <img src="/clay yankees 3.jpg" alt="Clay Eavenson in a Yankees uniform at spring training" />
