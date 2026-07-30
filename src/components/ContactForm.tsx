@@ -4,10 +4,12 @@ import { useState } from "react";
 
 export default function ContactForm({ rows = 5 }: { rows?: number }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
     
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -23,12 +25,17 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
         body: JSON.stringify(data)
       });
       
+      const result = await res.json().catch(() => null);
+
       if (res.ok) {
         setStatus("success");
       } else {
+        setErrorMessage(result?.message ?? "Failed to send message.");
         setStatus("error");
       }
     } catch (err) {
+      console.error("Contact form submission failed:", err);
+      setErrorMessage("Failed to send message.");
       setStatus("error");
     }
   }
@@ -62,7 +69,7 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
       </button>
       {status === "error" && (
         <p style={{ color: "#ff4d4d", gridColumn: "span 2", margin: "10px 0 0 0", fontSize: "14px", fontWeight: "bold" }}>
-          Failed to send message. Please try again later.
+          {errorMessage} Please try again later.
         </p>
       )}
     </form>
