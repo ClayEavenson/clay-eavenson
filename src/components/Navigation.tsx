@@ -32,6 +32,13 @@ export default function Navigation() {
           The Book
         </Link>
         <Link 
+          className={`nav-link ${pathname === "/gallery" ? "is-current" : ""}`} 
+          href="/gallery"
+          aria-current={pathname === "/gallery" ? "page" : undefined}
+        >
+          Gallery
+        </Link>
+        <Link 
           className={`nav-link ${pathname === "/contact" ? "is-current" : ""}`} 
           href="/contact"
           aria-current={pathname === "/contact" ? "page" : undefined}
