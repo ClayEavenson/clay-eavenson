@@ -11,7 +11,7 @@ export default function Home() {
               <p className="hero-sub">Lessons from a life of big dreams, insanely bad circumstances, and starting over.</p>
             </div>
             <div className="hero-actions">
-              <a className="btn btn-primary" href="https://www.amazon.com/" rel="noopener noreferrer" target="_blank">Buy the book<span aria-hidden="true">&#8594;</span></a>
+              <a className="btn btn-primary" href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1" rel="noopener noreferrer" target="_blank">Buy the book<span aria-hidden="true">&#8594;</span></a>
               <a className="btn btn-outline" href="#about">About Clay<span aria-hidden="true">&#8594;</span></a>
             </div>
           </div>
@@ -55,7 +55,7 @@ export default function Home() {
               <p className="statement">This is not a book about avoiding failure.</p>
               <p className="statement accent">It is about discovering that failure is not always the end of the story.</p>
             </div>
-            <a className="btn btn-primary btn-wide" href="https://www.amazon.com/" rel="noopener noreferrer" target="_blank">Buy on Amazon<span aria-hidden="true">&#8594;</span></a>
+            <a className="btn btn-primary btn-wide" href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1" rel="noopener noreferrer" target="_blank">Buy on Amazon<span aria-hidden="true">&#8594;</span></a>
           </div>
         </section>
 
@@ -118,7 +118,7 @@ export default function Home() {
       <footer className="site-footer">
         <span>&#169; 2026 Clay Eavenson</span>
         <span>Sit Down, Shut Up, Hold On</span>
-        <a href="https://www.amazon.com/" rel="noopener noreferrer" target="_blank">Buy the book &#8594;</a>
+        <a href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1" rel="noopener noreferrer" target="_blank">Buy the book &#8594;</a>
       </footer>
     </>
   );
