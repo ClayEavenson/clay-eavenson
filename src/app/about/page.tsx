@@ -14,10 +14,11 @@ export default function About() {
           <h1 className="hero-title" style={{ fontSize: "56px", lineHeight: 0.94, marginBottom: "24px", color: "var(--bone-bright)" }}>
             Chased the dream.<br />Lost the plot.<br />Started over.
           </h1>
-          <p>Husband. Father. Former professional baseball player with the New York Yankees. Former real estate agent. Former fishing guide. Current entrepreneur — and a reluctant expert in rebuilding after disaster.</p>
-          <p>Clay writes with the kind of honesty that admits he was often the common denominator in his own problems, and with the humor needed to survive that realization.</p>
-          <p>He's seen the top of the mountain and the bottom of the barrel. His journey through professional sports taught him how to compete, but his journey through the rest of life taught him how to survive.</p>
-          <p>When everything falls apart, you can either sit around feeling sorry for yourself, or you can sit down, shut up, and hold on. Clay chose the latter.</p>
+          <p>Husband. Father. Former professional baseball player with the New York Yankees. Former real estate agent. Former fishing guide. Current entrepreneur—and someone who has had to reinvent himself more than once.</p>
+          <p>Clay has experienced the thrill of chasing enormous dreams and the reality of watching carefully built plans fall apart. Professional sports taught him how to compete, but the years that followed taught him how to adapt, rebuild, and keep moving when life changed without warning.</p>
+          <p>Each new beginning required him to become someone different without losing sight of who he was. Through career changes, financial setbacks, family crises, and unexpected turns, he learned that starting over is not the same as giving up.</p>
+          <p>When everything falls apart, you can sit around feeling sorry for yourself—or you can sit down, shut up, hold on, and find a way forward.</p>
+          <p>Clay chose to keep going.</p>
         </div>
         <div className="photo-grid" style={{ gridTemplateColumns: "1fr", gap: "var(--rule-w)", border: "var(--rule-w) solid var(--rule)" }}>
           <img src="/clay-portrait.png" alt="Clay Eavenson Portrait" style={{ height: "auto", objectPosition: "center top" }} />
