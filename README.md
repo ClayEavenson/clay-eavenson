@@ -35,7 +35,7 @@ RECAPTCHA_MIN_SCORE=0.5
 
 `CONTACT_EMAIL`, `CONTACT_FROM_EMAIL`, and `RECAPTCHA_MIN_SCORE` have production-safe defaults in the app, but they can be overridden with environment variables. Resend only allows `onboarding@resend.dev` for limited testing. To send to public recipients, verify the sending domain in Resend and use a `CONTACT_FROM_EMAIL` address from that verified domain.
 
-reCAPTCHA v3 is optional until both keys are configured. Add the site key as `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and the secret key as `RECAPTCHA_SECRET_KEY` in production to enforce verification on the contact form.
+reCAPTCHA v3 is required for form submissions. Add the site key as `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and the secret key as `RECAPTCHA_SECRET_KEY` in production.
 
 ## Learn More
 

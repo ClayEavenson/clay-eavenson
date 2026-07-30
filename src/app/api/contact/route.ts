@@ -18,13 +18,11 @@ type RecaptchaVerifyResponse = {
   'error-codes'?: string[];
 };
 
-const recaptchaAction = 'contact_submit';
-
-async function verifyRecaptcha(token: string, expectedAction: string) {
+async function verifyRecaptcha(token: string) {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY?.trim();
 
   if (!secretKey) {
-    return { ok: true };
+    throw new Error('RECAPTCHA_SECRET_KEY environment variable is not set');
   }
 
   const minimumScore = Number(process.env.RECAPTCHA_MIN_SCORE ?? '0.5');
@@ -40,7 +38,6 @@ async function verifyRecaptcha(token: string, expectedAction: string) {
 
   if (
     !result.success ||
-    result.action !== expectedAction ||
     typeof result.score !== 'number' ||
     result.score < minimumScore
   ) {
@@ -61,7 +58,8 @@ async function verifyRecaptcha(token: string, expectedAction: string) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message, recaptchaToken } = body;
+    const { name, email, message } = body;
+    const token = body['g-recaptcha-response'];
 
     if (
       typeof name !== 'string' ||
@@ -77,25 +75,20 @@ export async function POST(request: Request) {
       );
     }
 
-    if (process.env.RECAPTCHA_SECRET_KEY?.trim()) {
-      if (
-        typeof recaptchaToken !== 'string' ||
-        !recaptchaToken.trim()
-      ) {
-        return NextResponse.json(
-          { success: false, message: 'reCAPTCHA verification failed.' },
-          { status: 400 }
-        );
-      }
+    if (typeof token !== 'string' || !token.trim()) {
+      return NextResponse.json(
+        { success: false, message: 'Missing reCAPTCHA token.' },
+        { status: 400 }
+      );
+    }
 
-      const recaptcha = await verifyRecaptcha(recaptchaToken, recaptchaAction);
+    const recaptcha = await verifyRecaptcha(token);
 
-      if (!recaptcha.ok) {
-        return NextResponse.json(
-          { success: false, message: 'reCAPTCHA verification failed.' },
-          { status: 400 }
-        );
-      }
+    if (!recaptcha.ok) {
+      return NextResponse.json(
+        { success: false, message: 'reCAPTCHA verification failed.' },
+        { status: 422 }
+      );
     }
 
     const resendApiKey = process.env.RESEND_API_KEY?.trim();

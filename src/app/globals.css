@@ -464,6 +464,15 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
 .contact-form textarea:focus { border-color: var(--gold); outline: none; }
 .contact-form input:focus-visible,
 .contact-form textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.recaptcha-notice {
+  margin: -6px 0 0;
+  color: var(--dim);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.recaptcha-notice a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.recaptcha-notice a:hover { color: var(--gold-hi); }
+.grecaptcha-badge { visibility: hidden !important; }
 
 /* ---------- Footer ---------- */
 

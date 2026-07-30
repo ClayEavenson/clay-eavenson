@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import { useState } from "react";
 
 declare global {
@@ -13,7 +12,7 @@ declare global {
 }
 
 const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim();
-const recaptchaAction = "contact_submit";
+const recaptchaAction = "submit";
 
 export default function ContactForm({ rows = 5 }: { rows?: number }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -21,7 +20,7 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
 
   async function getRecaptchaToken() {
     if (!recaptchaSiteKey) {
-      return null;
+      throw new Error("Contact form security is not configured.");
     }
 
     if (!window.grecaptcha) {
@@ -49,8 +48,7 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
         name: formData.get("name"),
         email: formData.get("email"),
         message: formData.get("message"),
-        recaptchaToken: await getRecaptchaToken(),
-        recaptchaAction,
+        "g-recaptcha-response": await getRecaptchaToken(),
       };
 
       const res = await fetch("/api/contact", {
@@ -69,7 +67,7 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
       }
     } catch (err) {
       console.error("Contact form submission failed:", err);
-      setErrorMessage("Failed to send message.");
+      setErrorMessage(err instanceof Error ? err.message : "Failed to send message.");
       setStatus("error");
     }
   }
@@ -85,35 +83,38 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
   }
 
   return (
-    <>
-      {recaptchaSiteKey && (
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
-          strategy="afterInteractive"
-        />
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <label className="field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" required disabled={status === "loading"} />
+      </label>
+      <label className="field">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="you@email.com" required disabled={status === "loading"} />
+      </label>
+      <label className="field field-full">
+        <span>Message</span>
+        <textarea name="message" rows={rows} placeholder="Tell him what's on your mind." required disabled={status === "loading"}></textarea>
+      </label>
+      <button className="btn btn-primary field-full" type="submit" disabled={status === "loading"}>
+        {status === "loading" ? "Sending..." : "Send it"}<span aria-hidden="true">&#8594;</span>
+      </button>
+      <p className="recaptcha-notice field-full">
+        This site is protected by reCAPTCHA and the Google{" "}
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="https://policies.google.com/terms" rel="noopener noreferrer" target="_blank">
+          Terms of Service
+        </a>{" "}
+        apply.
+      </p>
+      {status === "error" && (
+        <p style={{ color: "#ff4d4d", gridColumn: "span 2", margin: "10px 0 0 0", fontSize: "14px", fontWeight: "bold" }}>
+          {errorMessage} Please try again later.
+        </p>
       )}
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <label className="field">
-          <span>Name</span>
-          <input type="text" name="name" placeholder="Your name" required disabled={status === "loading"} />
-        </label>
-        <label className="field">
-          <span>Email</span>
-          <input type="email" name="email" placeholder="you@email.com" required disabled={status === "loading"} />
-        </label>
-        <label className="field field-full">
-          <span>Message</span>
-          <textarea name="message" rows={rows} placeholder="Tell him what's on your mind." required disabled={status === "loading"}></textarea>
-        </label>
-        <button className="btn btn-primary field-full" type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "Sending..." : "Send it"}<span aria-hidden="true">&#8594;</span>
-        </button>
-        {status === "error" && (
-          <p style={{ color: "#ff4d4d", gridColumn: "span 2", margin: "10px 0 0 0", fontSize: "14px", fontWeight: "bold" }}>
-            {errorMessage} Please try again later.
-          </p>
-        )}
-      </form>
-    </>
+    </form>
   );
 }
