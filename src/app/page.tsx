@@ -16,7 +16,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art">
-            <img src="/cover mock final front.png" alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline" />
+            <img src="/book-cover.png" alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline" />
             <div className="vignette" aria-hidden="true"></div>
           </div>
         </section>
