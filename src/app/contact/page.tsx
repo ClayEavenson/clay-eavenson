@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Clay Eavenson. Book clubs, podcasts, speaking events, or a chapter that hit close to home.",
+};
+
 export default function Contact() {
   return (
     <main className="flex-1 w-full min-h-[90vh]">

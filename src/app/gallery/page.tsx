@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import fs from 'fs';
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "Life in pictures. A visual journey through Clay Eavenson's life and career.",
+};
 import path from 'path';
 import GalleryGrid from '@/components/GalleryGrid';
 

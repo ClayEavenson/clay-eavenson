@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Husband. Father. Former professional baseball player with the New York Yankees. Current entrepreneur—and someone who has had to reinvent himself.",
+};
+
 export default function About() {
   return (
     <main className="flex-1 w-full pb-24">

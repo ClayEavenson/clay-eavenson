@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "The Book",
+  description: "What do professional baseball, fishing boats, failed businesses, family chaos, medical crises, financial collapse, faith, and starting over have in common?",
+};
+
 export default function TheBook() {
   return (
     <main className="flex-1 w-full pb-24">
