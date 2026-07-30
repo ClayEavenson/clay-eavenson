@@ -13,11 +13,10 @@ export default function Contact() {
             </h1>
             <p>Book clubs, podcasts, speaking events, or a chapter that hit close to home. Clay reads every message.</p>
             <ul className="contact-list">
-              <li><a href="mailto:hello@clayeavenson.com">hello@clayeavenson.com</a></li>
-              <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a> &#183; <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=61592661539182" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             </ul>
           </div>
-          <form className="contact-form" method="post" action="#">
+          <form className="contact-form" method="POST" action="https://formsubmit.co/info@steamworks.io">
             <label className="field">
               <span>Name</span>
               <input type="text" name="name" placeholder="Your name" required />
