@@ -12,7 +12,7 @@ export default function About() {
             <span className="rule" aria-hidden="true"></span>
           </div>
           <h1 className="hero-title" style={{ fontSize: "56px", lineHeight: 0.94, marginBottom: "24px", color: "var(--bone-bright)" }}>
-            Chased the dream.<br />Lost the plot.<br />Started over.
+            Dreamed big.<br />Life hit hard.<br />Built again. (and again, and again...)
           </h1>
           <p>Husband. Father. Former professional baseball player with the New York Yankees. Former real estate agent. Former fishing guide. Current entrepreneur—and someone who has had to reinvent himself more than once.</p>
           <p>Clay has experienced the thrill of chasing enormous dreams and the reality of watching carefully built plans fall apart. Professional sports taught him how to compete, but the years that followed taught him how to adapt, rebuild, and keep moving when life changed without warning.</p>

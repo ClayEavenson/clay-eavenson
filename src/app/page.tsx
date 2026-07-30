@@ -65,7 +65,7 @@ export default function Home() {
               <span className="eyebrow">About Clay</span>
               <span className="rule" aria-hidden="true"></span>
             </div>
-            <h2 className="h2">Chased the dream.<br />Lost the plot.<br />Started over.</h2>
+            <h2 className="h2">Dreamed big.<br />Life hit hard.<br />Built again. (and again, and again...)</h2>
             <p>Husband. Father. Former professional baseball player with the New York Yankees. Former real estate agent. Former fishing guide. Current entrepreneur — and a reluctant expert in rebuilding after disaster.</p>
             <p>Clay writes with the kind of honesty that admits he was often the common denominator in his own problems, and with the humor needed to survive that realization.</p>
             <a className="link-underline" href="/about">Read the full story<span aria-hidden="true">&#8594;</span></a>
