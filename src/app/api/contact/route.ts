@@ -36,14 +36,22 @@ export async function POST(request: Request) {
     const trimmedEmail = email.trim();
     const trimmedMessage = message.trim();
 
-    if (!resendApiKey || !contactEmail) {
+    const missingConfig = [
+      !resendApiKey ? 'RESEND_API_KEY' : null,
+      !contactEmail ? 'CONTACT_EMAIL' : null,
+    ].filter(Boolean);
+
+    if (missingConfig.length > 0) {
       console.error('Contact form environment is incomplete', {
         hasResendApiKey: Boolean(resendApiKey),
         hasContactEmail: Boolean(contactEmail),
       });
 
       return NextResponse.json(
-        { success: false, message: 'Server configuration error.' },
+        {
+          success: false,
+          message: `Server configuration error: missing ${missingConfig.join(', ')}.`,
+        },
         { status: 500 }
       );
     }
