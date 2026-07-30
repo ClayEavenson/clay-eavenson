@@ -30,7 +30,7 @@ CONTACT_EMAIL=info@steamworks.io
 CONTACT_FROM_EMAIL="Clay Eavenson <contact@clayeavenson.com>"
 ```
 
-Resend only allows `onboarding@resend.dev` for limited testing. To send to public recipients, verify the sending domain in Resend and use a `CONTACT_FROM_EMAIL` address from that verified domain.
+`CONTACT_EMAIL` and `CONTACT_FROM_EMAIL` have production-safe defaults in the app, but they can be overridden with environment variables. Resend only allows `onboarding@resend.dev` for limited testing. To send to public recipients, verify the sending domain in Resend and use a `CONTACT_FROM_EMAIL` address from that verified domain.
 
 ## Learn More
 

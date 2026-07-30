@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
-    const contactEmail = process.env.CONTACT_EMAIL;
+    const contactEmail = process.env.CONTACT_EMAIL ?? 'info@steamworks.io';
     const fromEmail = process.env.CONTACT_FROM_EMAIL ?? 'Clay Eavenson <contact@clayeavenson.com>';
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
