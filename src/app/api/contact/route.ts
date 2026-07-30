@@ -10,6 +10,14 @@ function escapeHtml(value: string) {
     .replaceAll("'", '&#39;');
 }
 
+function isPlaceholderValue(value: string | undefined) {
+  if (!value) {
+    return true;
+  }
+
+  return value.includes('_your_') || value.endsWith('_here');
+}
+
 type RecaptchaVerifyResponse = {
   success: boolean;
   score?: number;
@@ -82,15 +90,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const recaptcha = await verifyRecaptcha(token);
-
-    if (!recaptcha.ok) {
-      return NextResponse.json(
-        { success: false, message: 'reCAPTCHA verification failed.' },
-        { status: 422 }
-      );
-    }
-
     const resendApiKey = process.env.RESEND_API_KEY?.trim();
     const contactEmail = process.env.CONTACT_EMAIL?.trim() || 'info@steamworks.io';
     const fromEmail =
@@ -100,13 +99,15 @@ export async function POST(request: Request) {
     const trimmedMessage = message.trim();
 
     const missingConfig = [
-      !resendApiKey ? 'RESEND_API_KEY' : null,
+      isPlaceholderValue(resendApiKey) ? 'RESEND_API_KEY' : null,
+      isPlaceholderValue(process.env.RECAPTCHA_SECRET_KEY?.trim()) ? 'RECAPTCHA_SECRET_KEY' : null,
       !contactEmail ? 'CONTACT_EMAIL' : null,
     ].filter(Boolean);
 
     if (missingConfig.length > 0) {
       console.error('Contact form environment is incomplete', {
         hasResendApiKey: Boolean(resendApiKey),
+        hasRecaptchaSecretKey: Boolean(process.env.RECAPTCHA_SECRET_KEY?.trim()),
         hasContactEmail: Boolean(contactEmail),
       });
 
@@ -116,6 +117,15 @@ export async function POST(request: Request) {
           message: `Server configuration error: missing ${missingConfig.join(', ')}.`,
         },
         { status: 500 }
+      );
+    }
+
+    const recaptcha = await verifyRecaptcha(token);
+
+    if (!recaptcha.ok) {
+      return NextResponse.json(
+        { success: false, message: 'reCAPTCHA verification failed.' },
+        { status: 422 }
       );
     }
 
