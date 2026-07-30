@@ -22,6 +22,11 @@ export default function RootLayout({
       <body>
         <Navigation />
         {children}
+        <footer className="site-footer">
+          <span>&#169; 2026 Clay Eavenson</span>
+          <span>Sit Down, Shut Up, Hold On</span>
+          <a href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1" rel="noopener noreferrer" target="_blank">Buy the book &#8594;</a>
+        </footer>
       </body>
     </html>
   );
