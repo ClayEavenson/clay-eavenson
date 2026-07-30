@@ -7,6 +7,10 @@ export default function Gallery() {
   let images: string[] = [];
   try {
     images = fs.readdirSync(galleryDir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
+    for (let i = images.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [images[i], images[j]] = [images[j], images[i]];
+    }
   } catch (e) {
     console.error("Could not read gallery directory", e);
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function GalleryGrid({ images }: { images: string[] }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -50,33 +51,44 @@ export default function GalleryGrid({ images }: { images: string[] }) {
         ))}
       </div>
 
-      {selectedImage && (
-        <div 
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(11, 12, 13, 0.95)",
-            zIndex: 100,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "var(--pad)",
-            cursor: "zoom-out"
-          }}
-          onClick={() => setSelectedImage(null)}
-        >
-          <img 
-            src={`/gallery/${selectedImage}`} 
-            alt="Expanded gallery image"
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             style={{
-              maxHeight: "100%",
-              maxWidth: "100%",
-              objectFit: "contain",
-              border: "var(--rule-w) solid var(--rule)"
+              position: "fixed",
+              inset: 0,
+              background: "rgba(11, 12, 13, 0.95)",
+              zIndex: 100,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "var(--pad)",
+              cursor: "zoom-out"
             }}
-          />
-        </div>
-      )}
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.img 
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              src={`/gallery/${selectedImage}`} 
+              alt="Expanded gallery image"
+              style={{
+                maxHeight: "100%",
+                maxWidth: "100%",
+                objectFit: "contain",
+                border: "var(--rule-w) solid var(--rule)"
+              }}
+              onClick={(e) => e.stopPropagation()} /* Prevent closing when clicking the image itself */
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
