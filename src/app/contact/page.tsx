@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -23,21 +24,7 @@ export default function Contact() {
               <li><a href="https://www.facebook.com/profile.php?id=61592661539182" target="_blank" rel="noopener noreferrer">Facebook</a></li>
             </ul>
           </div>
-          <form className="contact-form" method="POST" action="https://formsubmit.co/info@steamworks.io">
-            <label className="field">
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-            <label className="field">
-              <span>Email</span>
-              <input type="email" name="email" placeholder="you@email.com" required />
-            </label>
-            <label className="field field-full">
-              <span>Message</span>
-              <textarea name="message" rows={8} placeholder="Tell him what's on your mind." required></textarea>
-            </label>
-            <button className="btn btn-primary field-full" type="submit">Send it<span aria-hidden="true">&#8594;</span></button>
-          </form>
+          <ContactForm rows={8} />
         </div>
       </section>
     </main>

@@ -1,3 +1,5 @@
+import ContactForm from "@/components/ContactForm";
+
 export default function Home() {
   return (
     <>
@@ -96,21 +98,7 @@ export default function Home() {
                 <li>Facebook &#183; Instagram</li>
               </ul>
             </div>
-            <form className="contact-form" method="post" action="#">
-              <label className="field">
-                <span>Name</span>
-                <input type="text" name="name" placeholder="Your name" required />
-              </label>
-              <label className="field">
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@email.com" required />
-              </label>
-              <label className="field field-full">
-                <span>Message</span>
-                <textarea name="message" rows={5} placeholder="Tell him what's on your mind." required></textarea>
-              </label>
-              <button className="btn btn-primary field-full" type="submit">Send it<span aria-hidden="true">&#8594;</span></button>
-            </form>
+            <ContactForm rows={5} />
           </div>
         </section>
       </main>
