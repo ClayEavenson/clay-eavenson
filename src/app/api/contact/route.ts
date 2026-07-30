@@ -10,10 +10,58 @@ function escapeHtml(value: string) {
     .replaceAll("'", '&#39;');
 }
 
+type RecaptchaVerifyResponse = {
+  success: boolean;
+  score?: number;
+  action?: string;
+  hostname?: string;
+  'error-codes'?: string[];
+};
+
+const recaptchaAction = 'contact_submit';
+
+async function verifyRecaptcha(token: string, expectedAction: string) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY?.trim();
+
+  if (!secretKey) {
+    return { ok: true };
+  }
+
+  const minimumScore = Number(process.env.RECAPTCHA_MIN_SCORE ?? '0.5');
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      secret: secretKey,
+      response: token,
+    }),
+  });
+  const result = (await response.json()) as RecaptchaVerifyResponse;
+
+  if (
+    !result.success ||
+    result.action !== expectedAction ||
+    typeof result.score !== 'number' ||
+    result.score < minimumScore
+  ) {
+    console.warn('reCAPTCHA verification failed', {
+      success: result.success,
+      action: result.action,
+      score: result.score,
+      hostname: result.hostname,
+      errorCodes: result['error-codes'],
+    });
+
+    return { ok: false };
+  }
+
+  return { ok: true };
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, message, recaptchaToken } = body;
 
     if (
       typeof name !== 'string' ||
@@ -27,6 +75,27 @@ export async function POST(request: Request) {
         { success: false, message: 'Missing required fields: name, email, or message.' },
         { status: 400 }
       );
+    }
+
+    if (process.env.RECAPTCHA_SECRET_KEY?.trim()) {
+      if (
+        typeof recaptchaToken !== 'string' ||
+        !recaptchaToken.trim()
+      ) {
+        return NextResponse.json(
+          { success: false, message: 'reCAPTCHA verification failed.' },
+          { status: 400 }
+        );
+      }
+
+      const recaptcha = await verifyRecaptcha(recaptchaToken, recaptchaAction);
+
+      if (!recaptcha.ok) {
+        return NextResponse.json(
+          { success: false, message: 'reCAPTCHA verification failed.' },
+          { status: 400 }
+        );
+      }
     }
 
     const resendApiKey = process.env.RESEND_API_KEY?.trim();

@@ -28,9 +28,14 @@ The contact form sends through Resend from `src/app/api/contact/route.ts`. Set t
 RESEND_API_KEY=re_...
 CONTACT_EMAIL=info@steamworks.io
 CONTACT_FROM_EMAIL="Clay Eavenson <contact@clayeavenson.com>"
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=...
+RECAPTCHA_SECRET_KEY=...
+RECAPTCHA_MIN_SCORE=0.5
 ```
 
-`CONTACT_EMAIL` and `CONTACT_FROM_EMAIL` have production-safe defaults in the app, but they can be overridden with environment variables. Resend only allows `onboarding@resend.dev` for limited testing. To send to public recipients, verify the sending domain in Resend and use a `CONTACT_FROM_EMAIL` address from that verified domain.
+`CONTACT_EMAIL`, `CONTACT_FROM_EMAIL`, and `RECAPTCHA_MIN_SCORE` have production-safe defaults in the app, but they can be overridden with environment variables. Resend only allows `onboarding@resend.dev` for limited testing. To send to public recipients, verify the sending domain in Resend and use a `CONTACT_FROM_EMAIL` address from that verified domain.
+
+reCAPTCHA v3 is optional until both keys are configured. Add the site key as `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` and the secret key as `RECAPTCHA_SECRET_KEY` in production to enforce verification on the contact form.
 
 ## Learn More
 
