@@ -94,8 +94,7 @@ export default function Home() {
               <h2 className="h2">Get in<br />touch</h2>
               <p>Book clubs, podcasts, speaking events, or a chapter that hit close to home. Clay reads every message.</p>
               <ul className="contact-list">
-                <li><a href="mailto:hello@clayeavenson.com">hello@clayeavenson.com</a></li>
-                <li>Facebook &#183; Instagram</li>
+                <li><a href="https://www.facebook.com/profile.php?id=61592661539182" target="_blank" rel="noopener noreferrer">Facebook</a></li>
               </ul>
             </div>
             <ContactForm rows={5} />
