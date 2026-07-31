@@ -29,10 +29,7 @@ export default function Gallery() {
   return (
     <main className="flex-1 w-full pb-24">
       <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <picture className="w-full">
-          <source srcSet="/hero-banner.webp" type="image/webp" />
-          <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
-        </picture>
+        <img src="/hero-banner.webp" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
       </div>
 
       {/* Replaced className="about" with standard padding and background to avoid the 2-column constraint */}

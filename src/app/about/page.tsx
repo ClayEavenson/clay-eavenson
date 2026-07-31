@@ -9,10 +9,7 @@ export default function About() {
   return (
     <main className="flex-1 w-full pb-24">
       <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <picture className="w-full">
-          <source srcSet="/hero-banner.webp" type="image/webp" />
-          <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
-        </picture>
+        <img src="/hero-banner.webp" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
       </div>
 
       <section className="about" style={{ borderTop: "none", marginTop: 0 }}>
@@ -31,10 +28,7 @@ export default function About() {
           <p>Clay chose to keep going.</p>
         </div>
         <div className="photo-grid" style={{ gridTemplateColumns: "1fr", gap: "var(--rule-w)", border: "var(--rule-w) solid var(--rule)" }}>
-          <picture>
-            <source srcSet="/clay-portrait.webp" type="image/webp" />
-            <img src="/clay-portrait.png" alt="Clay Eavenson Portrait" width={1254} height={1254} loading="lazy" decoding="async" style={{ height: "auto", objectPosition: "center top" }} />
-          </picture>
+          <img src="/clay-portrait.webp" alt="Clay Eavenson Portrait" width={1254} height={1254} loading="lazy" decoding="async" style={{ height: "auto", objectPosition: "center top" }} />
         </div>
       </section>
     </main>

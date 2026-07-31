@@ -9,10 +9,7 @@ export default function TheBook() {
   return (
     <main className="flex-1 w-full pb-24">
       <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <picture className="w-full">
-          <source srcSet="/hero-banner.webp" type="image/webp" />
-          <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
-        </picture>
+        <img src="/hero-banner.webp" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
       </div>
 
       <section className="book" id="the-book" style={{ paddingBottom: "78px" }}>
@@ -40,14 +37,8 @@ export default function TheBook() {
         </div>
 
         <div className="photo-grid" style={{ marginBottom: "64px" }}>
-          <picture>
-            <source srcSet="/clay pitching yankees.webp" type="image/webp" />
-            <img src="/clay pitching yankees.jpg" alt="Clay pitching for the Yankees" width={540} height={758} loading="lazy" decoding="async" style={{ height: "400px" }} />
-          </picture>
-          <picture>
-            <source srcSet="/clay greensboro 2.webp" type="image/webp" />
-            <img src="/clay greensboro 2.jpg" alt="Clay in Greensboro" width={720} height={960} loading="lazy" decoding="async" style={{ height: "400px" }} />
-          </picture>
+          <img src="/clay pitching yankees.webp" alt="Clay pitching for the Yankees" width={540} height={758} loading="lazy" decoding="async" style={{ height: "400px" }} />
+          <img src="/clay greensboro 2.webp" alt="Clay in Greensboro" width={720} height={960} loading="lazy" decoding="async" style={{ height: "400px" }} />
         </div>
 
         <div className="book-close">
