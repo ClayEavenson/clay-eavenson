@@ -13,6 +13,41 @@ declare global {
 
 const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim();
 const recaptchaAction = "submit";
+let recaptchaScriptPromise: Promise<void> | null = null;
+
+function loadRecaptchaScript() {
+  if (window.grecaptcha) {
+    return Promise.resolve();
+  }
+
+  if (!recaptchaSiteKey) {
+    return Promise.reject(new Error("Contact form security is not configured."));
+  }
+
+  if (!recaptchaScriptPromise) {
+    recaptchaScriptPromise = new Promise<void>((resolve, reject) => {
+      const existingScript = document.querySelector<HTMLScriptElement>(
+        'script[src^="https://www.google.com/recaptcha/api.js"]',
+      );
+
+      if (existingScript) {
+        existingScript.addEventListener("load", () => resolve(), { once: true });
+        existingScript.addEventListener("error", () => reject(new Error("reCAPTCHA failed to load.")), { once: true });
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error("reCAPTCHA failed to load."));
+      document.head.appendChild(script);
+    });
+  }
+
+  return recaptchaScriptPromise;
+}
 
 export default function ContactForm({ rows = 5 }: { rows?: number }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -22,6 +57,8 @@ export default function ContactForm({ rows = 5 }: { rows?: number }) {
     if (!recaptchaSiteKey) {
       throw new Error("Contact form security is not configured.");
     }
+
+    await loadRecaptchaScript();
 
     if (!window.grecaptcha) {
       throw new Error("reCAPTCHA is still loading.");

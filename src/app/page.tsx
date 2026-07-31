@@ -18,7 +18,17 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art">
-            <img src="/book-cover.png" alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline" />
+            <picture>
+              <source srcSet="/book-cover.webp" type="image/webp" />
+              <img
+                src="/book-cover.png"
+                alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline"
+                width={1122}
+                height={1402}
+                fetchPriority="high"
+                decoding="async"
+              />
+            </picture>
             <div className="vignette" aria-hidden="true"></div>
           </div>
         </section>
@@ -73,15 +83,30 @@ export default function Home() {
             <a className="link-underline" href="/about">Read the full story<span aria-hidden="true">&#8594;</span></a>
           </div>
           <div className="photo-grid">
-            <img src="/clay yankees 3.jpg" alt="Clay Eavenson in a Yankees uniform at spring training" />
-            <img src="/clay dekalb.jpg" alt="Clay Eavenson on the field after a game" />
-            <img src="/paige clay.jpg" alt="Clay and Paige Eavenson" />
-            <img src="/paige and clay.jpg" alt="Clay and Paige Eavenson on the water" />
+            <picture>
+              <source srcSet="/clay yankees 3.webp" type="image/webp" />
+              <img src="/clay yankees 3.jpg" alt="Clay Eavenson in a Yankees uniform at spring training" width={720} height={960} loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source srcSet="/clay dekalb.webp" type="image/webp" />
+              <img src="/clay dekalb.jpg" alt="Clay Eavenson on the field after a game" width={720} height={960} loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source srcSet="/paige clay.webp" type="image/webp" />
+              <img src="/paige clay.jpg" alt="Clay and Paige Eavenson" width={1080} height={1628} loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source srcSet="/paige and clay.webp" type="image/webp" />
+              <img src="/paige and clay.jpg" alt="Clay and Paige Eavenson on the water" width={960} height={960} loading="lazy" decoding="async" />
+            </picture>
           </div>
         </section>
 
         <figure className="quote-band">
-          <img src="/promo.png" alt="Quote from the book: If you put my life into a movie, people would walk out of the theater saying: that was ridiculous. None of that would ever happen to one person. I understand. There are parts of my life I would not believe either if I had not been standing there when they happened." />
+          <picture>
+            <source srcSet="/promo.webp" type="image/webp" />
+            <img src="/promo.png" alt="Quote from the book: If you put my life into a movie, people would walk out of the theater saying: that was ridiculous. None of that would ever happen to one person. I understand. There are parts of my life I would not believe either if I had not been standing there when they happened." width={1731} height={909} loading="lazy" decoding="async" />
+          </picture>
         </figure>
 
         <section className="contact" id="contact">

@@ -49,6 +49,8 @@ body {
 }
 
 img { display: block; max-width: 100%; }
+picture.w-full { display: block; }
+picture.w-full img { width: 100%; }
 
 a { color: var(--gold); text-decoration: none; }
 a:hover { color: var(--gold-hi); }
@@ -271,6 +273,7 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   background: #000;
   border-left: var(--rule-w) solid var(--rule);
 }
+.hero-art picture { display: block; width: 100%; height: 100%; }
 .hero-art img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Storm vignette over the cover art */
@@ -382,13 +385,19 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   background: var(--rule);
   border: var(--rule-w) solid var(--rule);
 }
+.photo-grid picture {
+  display: block;
+  background: var(--ink);
+}
 .photo-grid img {
   width: 100%;
   height: 250px;
   object-fit: cover;
   filter: var(--photofx);
 }
+.photo-grid picture:nth-child(1) img,
 .photo-grid img:nth-child(1) { object-position: center 30%; }
+.photo-grid picture:nth-child(2) img,
 .photo-grid img:nth-child(2) { object-position: center 25%; }
 
 /* ---------- Quote band (supplied artwork) ---------- */
@@ -398,6 +407,7 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   border-top: var(--rule-w) solid var(--rule);
   border-bottom: var(--rule-w) solid var(--rule);
 }
+.quote-band picture { display: block; width: 100%; }
 .quote-band img { width: 100%; }
 
 /* ---------- Contact ---------- */

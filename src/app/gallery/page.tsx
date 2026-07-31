@@ -8,15 +8,20 @@ export const metadata: Metadata = {
 import path from 'path';
 import GalleryGrid from '@/components/GalleryGrid';
 
+function gallerySortKey(fileName: string) {
+  return Array.from(fileName).reduce((hash, char) => {
+    return (hash * 31 + char.charCodeAt(0)) % 100000;
+  }, 7);
+}
+
 export default function Gallery() {
   const galleryDir = path.join(process.cwd(), 'public', 'gallery');
   let images: string[] = [];
   try {
-    images = fs.readdirSync(galleryDir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
-    for (let i = images.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [images[i], images[j]] = [images[j], images[i]];
-    }
+    images = fs
+      .readdirSync(galleryDir)
+      .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file))
+      .sort((a, b) => gallerySortKey(a) - gallerySortKey(b));
   } catch (e) {
     console.error("Could not read gallery directory", e);
   }
@@ -24,7 +29,10 @@ export default function Gallery() {
   return (
     <main className="flex-1 w-full pb-24">
       <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" />
+        <picture className="w-full">
+          <source srcSet="/hero-banner.webp" type="image/webp" />
+          <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
+        </picture>
       </div>
 
       {/* Replaced className="about" with standard padding and background to avoid the 2-column constraint */}
