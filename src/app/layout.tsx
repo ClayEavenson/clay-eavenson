@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Archivo } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
@@ -35,6 +36,14 @@ export const metadata: Metadata = {
 };
 
 const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY?.trim();
+const archivo = Archivo({
+  axes: ["wdth"],
+  display: "swap",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  weight: "variable",
+});
 
 export default function RootLayout({
   children,
@@ -42,11 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={archivo.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&display=swap" />
         {recaptchaSiteKey && (
           <Script
             src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
