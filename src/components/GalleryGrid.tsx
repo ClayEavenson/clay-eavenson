@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function GalleryGrid({ images }: { images: string[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -72,7 +73,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
           }
           .gallery-img {
             width: 100%;
-            aspect-ratio: 1 / 1;
+            height: 100%;
             object-fit: cover;
             filter: var(--photofx);
             transition: filter 0.3s ease;
@@ -128,12 +129,17 @@ export default function GalleryGrid({ images }: { images: string[] }) {
         `}} />
         
         {images.map((img, idx) => (
-          <div key={idx} style={{ background: "var(--ink)" }} onClick={() => setSelectedIndex(idx)}>
-            <img 
+          <div
+            key={idx}
+            style={{ background: "var(--ink)", position: "relative", aspectRatio: "1 / 1" }}
+            onClick={() => setSelectedIndex(idx)}
+          >
+            <Image
               src={`/gallery/${img}`} 
               alt={`Gallery image ${idx + 1}`} 
+              fill
+              sizes="(max-width: 960px) 50vw, 25vw"
               className="gallery-img"
-              loading="lazy"
             />
           </div>
         ))}
@@ -172,21 +178,30 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 &#8249;
               </button>
             )}
-            <motion.img 
+            <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              src={`/gallery/${selectedImage}`} 
-              alt="Expanded gallery image"
               style={{
-                maxHeight: "100%",
-                maxWidth: "100%",
-                objectFit: "contain",
-                border: "var(--rule-w) solid var(--rule)"
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                maxHeight: "calc(100vh - (var(--pad) * 2))",
+                maxWidth: "calc(100vw - (var(--pad) * 2))",
               }}
               onClick={(e) => e.stopPropagation()} /* Prevent closing when clicking the image itself */
-            />
+            >
+              <Image
+                src={`/gallery/${selectedImage}`}
+                alt="Expanded gallery image"
+                fill
+                sizes="100vw"
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </motion.div>
             {images.length > 1 && (
               <button
                 type="button"
