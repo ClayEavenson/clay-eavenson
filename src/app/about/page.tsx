@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -8,9 +7,9 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-      <main className="flex-1 w-full pb-24">
-        <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <Image src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" width={2033} height={774} sizes="100vw" className="w-full object-cover" />
+    <main className="flex-1 w-full pb-24">
+      <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
+        <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" />
       </div>
 
       <section className="about" style={{ borderTop: "none", marginTop: 0 }}>
@@ -29,7 +28,7 @@ export default function About() {
           <p>Clay chose to keep going.</p>
         </div>
         <div className="photo-grid" style={{ gridTemplateColumns: "1fr", gap: "var(--rule-w)", border: "var(--rule-w) solid var(--rule)" }}>
-          <Image src="/clay-portrait.png" alt="Clay Eavenson Portrait" width={1254} height={1254} sizes="(max-width: 960px) 100vw, 50vw" style={{ height: "auto", objectPosition: "center top" }} />
+          <img src="/clay-portrait.png" alt="Clay Eavenson Portrait" style={{ height: "auto", objectPosition: "center top" }} />
         </div>
       </section>
     </main>

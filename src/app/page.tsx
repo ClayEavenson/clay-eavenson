@@ -1,5 +1,4 @@
 import ContactForm from "@/components/ContactForm";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -19,14 +18,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art">
-            <Image
-              src="/book-cover.png"
-              alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline"
-              fill
-              sizes="(max-width: 960px) 100vw, 620px"
-              style={{ objectFit: "cover" }}
-              fetchPriority="high"
-            />
+            <img src="/book-cover.png" alt="Sit Down, Shut Up, Hold On — book cover, standing on a storm-lit shoreline" />
             <div className="vignette" aria-hidden="true"></div>
           </div>
         </section>
@@ -81,21 +73,15 @@ export default function Home() {
             <a className="link-underline" href="/about">Read the full story<span aria-hidden="true">&#8594;</span></a>
           </div>
           <div className="photo-grid">
-            <Image src="/clay yankees 3.jpg" alt="Clay Eavenson in a Yankees uniform at spring training" width={640} height={480} sizes="(max-width: 960px) 50vw, 25vw" />
-            <Image src="/clay dekalb.jpg" alt="Clay Eavenson on the field after a game" width={640} height={480} sizes="(max-width: 960px) 50vw, 25vw" />
-            <Image src="/paige clay.jpg" alt="Clay and Paige Eavenson" width={1080} height={1628} sizes="(max-width: 960px) 50vw, 25vw" />
-            <Image src="/paige and clay.jpg" alt="Clay and Paige Eavenson on the water" width={960} height={960} sizes="(max-width: 960px) 50vw, 25vw" />
+            <img src="/clay yankees 3.jpg" alt="Clay Eavenson in a Yankees uniform at spring training" />
+            <img src="/clay dekalb.jpg" alt="Clay Eavenson on the field after a game" />
+            <img src="/paige clay.jpg" alt="Clay and Paige Eavenson" />
+            <img src="/paige and clay.jpg" alt="Clay and Paige Eavenson on the water" />
           </div>
         </section>
 
         <figure className="quote-band">
-          <Image
-            src="/promo.png"
-            alt="Quote from the book: If you put my life into a movie, people would walk out of the theater saying: that was ridiculous. None of that would ever happen to one person. I understand. There are parts of my life I would not believe either if I had not been standing there when they happened."
-            width={1731}
-            height={909}
-            sizes="100vw"
-          />
+          <img src="/promo.png" alt="Quote from the book: If you put my life into a movie, people would walk out of the theater saying: that was ridiculous. None of that would ever happen to one person. I understand. There are parts of my life I would not believe either if I had not been standing there when they happened." />
         </figure>
 
         <section className="contact" id="contact">

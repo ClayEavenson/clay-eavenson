@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import fs from 'fs';
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Gallery",
@@ -13,15 +12,19 @@ export default function Gallery() {
   const galleryDir = path.join(process.cwd(), 'public', 'gallery');
   let images: string[] = [];
   try {
-    images = fs.readdirSync(galleryDir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file)).sort();
+    images = fs.readdirSync(galleryDir).filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file));
+    for (let i = images.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [images[i], images[j]] = [images[j], images[i]];
+    }
   } catch (e) {
     console.error("Could not read gallery directory", e);
   }
 
   return (
-      <main className="flex-1 w-full pb-24">
-        <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <Image src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" width={2033} height={774} sizes="100vw" className="w-full object-cover" />
+    <main className="flex-1 w-full pb-24">
+      <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
+        <img src="/hero-banner.png" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" />
       </div>
 
       {/* Replaced className="about" with standard padding and background to avoid the 2-column constraint */}
