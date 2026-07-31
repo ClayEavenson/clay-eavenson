@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <main className="flex-1 w-full pb-24">
-      <div className="w-full h-auto border-b-[2px] border-[#2b2a28]">
-        <img src="/hero-banner.webp" alt="Sit Down, Shut Up, Hold On" className="w-full object-cover" width={2033} height={774} fetchPriority="high" decoding="async" />
+      <div className="page-banner">
+        <img src="/hero-banner.webp" alt="Sit Down, Shut Up, Hold On" width={2033} height={774} fetchPriority="high" decoding="async" />
       </div>
 
       <section className="about" style={{ borderTop: "none", marginTop: 0 }}>
