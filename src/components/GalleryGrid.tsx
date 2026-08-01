@@ -127,16 +127,22 @@ export default function GalleryGrid({ images }: { images: string[] }) {
           }
         `}} />
         
-        {images.map((img, idx) => (
-          <div key={idx} style={{ background: "var(--ink)" }} onClick={() => setSelectedIndex(idx)}>
-            <img 
-              src={`/gallery/${img}`} 
-              alt={`Gallery image ${idx + 1}`} 
-              className="gallery-img"
-              loading="lazy"
-            />
-          </div>
-        ))}
+        {images.map((img, idx) => {
+          const stem = img.replace(/\.(jpe?g|png)$/i, '');
+          return (
+            <div key={idx} style={{ background: "var(--ink)" }} onClick={() => setSelectedIndex(idx)}>
+              <img
+                src={`/gallery/thumbs/${stem}.webp`}
+                alt={`Gallery image ${idx + 1}`}
+                className="gallery-img"
+                loading="lazy"
+                decoding="async"
+                width={600}
+                height={600}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <AnimatePresence>
@@ -177,7 +183,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              src={`/gallery/${selectedImage}`} 
+              src={`/gallery/large/${selectedImage.replace(/\.(jpe?g|png)$/i, '')}.webp`}
               alt="Expanded gallery image"
               style={{
                 maxHeight: "100%",

@@ -418,9 +418,16 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   margin: 0;
   border-top: var(--rule-w) solid var(--rule);
   border-bottom: var(--rule-w) solid var(--rule);
+  overflow: hidden;
+  line-height: 0; /* kill inline gap below img */
 }
 .quote-band picture { display: block; width: 100%; }
-.quote-band img { width: 100%; }
+.quote-band img {
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+  object-position: center center;
+}
 
 /* ---------- Contact ---------- */
 
