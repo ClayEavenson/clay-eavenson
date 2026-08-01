@@ -317,7 +317,7 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
 .poster {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 64px;
+  gap: 48px;
   align-items: end;
   padding: 52px var(--pad) 56px;
   background: var(--gold);
@@ -325,11 +325,13 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
 }
 .poster-lead { font-size: 58px; line-height: 1.02; font-stretch: 66%; }
 .poster-tag {
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1.05;
   font-stretch: 70%;
   font-style: italic;
   white-space: nowrap;
+  border-left: var(--rule-w) solid rgba(11, 12, 13, 0.35);
+  padding-left: 48px;
 }
 
 /* ---------- The Book ---------- */
