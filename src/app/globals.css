@@ -323,7 +323,7 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   background: var(--gold);
   color: var(--ink);
 }
-.poster-lead { font-size: 44px; line-height: 1.02; font-stretch: 66%; }
+.poster-lead { font-size: 58px; line-height: 1.02; font-stretch: 66%; }
 .poster-tag {
   font-size: 30px;
   line-height: 1.05;
@@ -538,7 +538,7 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   :root { --pad: 40px; }
   .hero { grid-template-columns: 1fr 480px; }
   .hero-title { font-size: 76px; }
-  .poster-lead { font-size: 36px; }
+  .poster-lead { font-size: 44px; }
   .book-lede { font-size: 26px; }
   .h2 { font-size: 46px; }
 }
