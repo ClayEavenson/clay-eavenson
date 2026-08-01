@@ -137,8 +137,6 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 className="gallery-img"
                 loading="lazy"
                 decoding="async"
-                width={600}
-                height={600}
               />
             </div>
           );
