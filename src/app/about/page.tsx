@@ -28,7 +28,7 @@ export default function About() {
           <p>Clay chose to keep going.</p>
         </div>
         <div className="photo-grid" style={{ gridTemplateColumns: "1fr", gap: "var(--rule-w)", border: "var(--rule-w) solid var(--rule)" }}>
-          <img src="/clay-portrait.webp" alt="Clay Eavenson Portrait" width={1254} height={1254} loading="lazy" decoding="async" style={{ height: "auto", objectPosition: "center top" }} />
+          <img src="/clay2.jpg" alt="Clay Eavenson Portrait" width={1254} height={1254} loading="lazy" decoding="async" style={{ height: "auto", objectPosition: "center top" }} />
         </div>
       </section>
     </main>
