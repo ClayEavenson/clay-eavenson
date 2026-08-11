@@ -108,7 +108,7 @@ export default function Home() {
           <div className="video-cta-embed">
             <div className="video-wrapper">
               <iframe
-                src="https://www.youtube.com/embed/uTePargdu4w?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/uTePargdu4w?rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&color=white"
                 title="Clay Eavenson — Sit Down, Shut Up, Hold On"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
