@@ -91,6 +91,32 @@ export default function Home() {
           <img src="/promo.webp" alt="Quote from the book: If you put my life into a movie, people would walk out of the theater saying: that was ridiculous. None of that would ever happen to one person. I understand. There are parts of my life I would not believe either if I had not been standing there when they happened." width={1731} height={909} loading="lazy" decoding="async" />
         </figure>
 
+        <section className="video-cta" id="watch">
+          <div className="video-cta-copy">
+            <p className="eyebrow"><span className="diamond" aria-hidden="true"></span>Hear it straight from Clay</p>
+            <h2 className="video-cta-heading">The book is one thing.<br /><em>This</em> is another.</h2>
+            <p className="video-cta-sub">Watch Clay tell the story the way only he can — unfiltered, unscripted, and impossible to look away from.</p>
+            <a
+              className="btn btn-primary btn-wide"
+              href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Get your copy on Amazon<span aria-hidden="true">&#8594;</span>
+            </a>
+          </div>
+          <div className="video-cta-embed">
+            <div className="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/uTePargdu4w?rel=0&modestbranding=1"
+                title="Clay Eavenson — Sit Down, Shut Up, Hold On"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="contact" id="contact">
           <div className="section-head">
             <span className="eyebrow">Contact</span>

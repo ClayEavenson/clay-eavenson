@@ -441,6 +441,77 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
 .quote-band picture { display: block; width: 100%; }
 .quote-band img { width: 100%; height: auto; }
 
+/* ---------- Video CTA ---------- */
+
+.video-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: var(--rule-w) solid var(--rule);
+  border-bottom: var(--rule-w) solid var(--rule);
+}
+
+.video-cta-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 72px var(--pad) 72px var(--pad);
+  border-right: var(--rule-w) solid var(--rule);
+}
+
+.video-cta-copy .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.video-cta-heading {
+  margin: 0;
+  font-size: 54px;
+  font-weight: 900;
+  font-stretch: 64%;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--bone-bright);
+}
+.video-cta-heading em {
+  font-style: italic;
+  font-stretch: 70%;
+  color: var(--gold);
+}
+
+.video-cta-sub {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--body);
+  max-width: 420px;
+  text-wrap: pretty;
+}
+
+.video-cta-embed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 48px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
 /* ---------- Contact ---------- */
 
 .contact { padding: 78px var(--pad) 80px; }
@@ -555,6 +626,9 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   .book-close { grid-template-columns: 1fr; gap: 32px; align-items: start; }
   .btn-wide { justify-self: start; }
   .about { grid-template-columns: 1fr; gap: 44px; }
+  .video-cta { grid-template-columns: 1fr; }
+  .video-cta-copy { border-right: none; border-bottom: var(--rule-w) solid var(--rule); padding: 56px var(--pad); }
+  .video-cta-embed { padding: 40px var(--pad); }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .site-footer { grid-template-columns: 1fr; }
   .site-footer > *:not(:last-child) {
@@ -665,6 +739,9 @@ main, .site-header, .site-footer { max-width: var(--maxw); margin-inline: auto; 
   .poster-tag { font-size: 24px; }
   .book-lede { font-size: 22px; }
   .statement { font-size: 21px; }
+  .video-cta-heading { font-size: 36px; }
+  .video-cta-sub { font-size: 16px; }
+  .video-cta-embed { padding: 24px var(--pad); }
   .photo-grid img { height: 180px; }
   .contact-form { grid-template-columns: 1fr; }
   .field-full { grid-column: span 1; }
