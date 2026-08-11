@@ -94,8 +94,8 @@ export default function Home() {
         <section className="video-cta" id="watch">
           <div className="video-cta-copy">
             <p className="eyebrow"><span className="diamond" aria-hidden="true"></span>Hear it straight from Clay</p>
-            <h2 className="video-cta-heading">The book is one thing.<br /><em>This</em> is another.</h2>
-            <p className="video-cta-sub">Watch Clay tell the story the way only he can — unfiltered, unscripted, and impossible to look away from.</p>
+            <h2 className="video-cta-heading">Crazy doesn&rsquo;t even start to describe what Clay went through.</h2>
+            <p className="video-cta-sub">Don&rsquo;t worry about Clay &mdash; this book helps you understand how to use what he went through to help you get through what <em>you</em> need to get through.</p>
             <a
               className="btn btn-primary btn-wide"
               href="https://www.amazon.com/Sit-Down-Shut-Hold-Circumstances/dp/B0HBYMB5ZH/ref=sr_1_1"
